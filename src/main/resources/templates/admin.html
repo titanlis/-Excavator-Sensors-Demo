@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin jsons</title>
+    <link rel="stylesheet" th:href="@{styles.css}"/>
+</head>
+<body>
+<div id="mainWindow">
+    <header id="header">
+        <h1>Admin JSON</h1>
+    </header>
+    <div>&nbsp</div>
+    <div class="vertDiv bord">
+    <div class="gorAroundDiv">
+        <div class="leftCol"><span class="mainText">Speed (jsons/sec):</span></div>
+        <form class="gorBetweenDiv" th:action="@{/admin}" th:method="post">
+            <div class="centerCol">
+                <div class="centerCol">
+                    <input id="rangeSpeed" style="width: 50%" name="speedValue" th:attr = "value=#{speedValue}"
+                           type="range" min="1" max="20" step="1" th:value="${speedValue}"
+                           list ="speedsList"
+                           th:onchange="document.getElementById('rangeValue').innerHTML = this.value;">
+
+                    <datalist id="speedsList">
+                        <option value="1" label="1">
+                        <option value="2">
+                        <option value="3">
+                        <option value="4">
+                        <option value="5" label="5">
+                        <option value="6">
+                        <option value="7">
+                        <option value="8">
+                        <option value="9">
+                        <option value="10" label="10">
+                        <option value="11">
+                        <option value="12">
+                        <option value="13">
+                        <option value="14">
+                        <option value="15" label="15">
+                        <option value="16">
+                        <option value="17">
+                        <option value="18">
+                        <option value="19">
+                        <option value="20" label="20">
+                    </datalist>
+
+                </div>
+                <div class="rightCol">
+                    <span id="rangeValue" class="mainText" th:text="${speedValue}"></span>
+                </div>
+            </div>
+            <div class="rightCol">
+                <input type="submit" style="display: none;">
+                <input type="submit" class="button24" value="set">
+            </div>
+        </form>
+    </div>
+    </div>
+
+    <span type="text" style="padding: 10px" text=" "></span>
+    <div class="gorAroundDiv">
+        <span class="mainText">Speed: </span>
+        <span class="mainText" th:text="${speedValue}"></span>
+    </div>
+    <span type="text" style="padding: 10px" text=" "></span>
+
+
+    <div class="spoiler">
+        <input type="checkbox" id="spoiler1">
+        <label for="spoiler1"><h4>Terminal commands (press spoiler)></h4></label>
+        <div class="gorAroundDiv">
+            <table>
+                <tr>
+                    <td width="40%" ><b>help</b></td>
+                    <td>This information</td>
+                </tr>
+                <tr>
+                    <td width="40%" ><b>info</b></td>
+                    <td>Show current settings</td>
+                </tr>
+                <tr>
+                    <td width="40%" ><b>json speed int</b></td>
+                    <td>Speed of sending json. Number json in 1 second (def 10).</td>
+                </tr>
+                <tr>
+                    <td width="40%" ><b>json manual json-string</b></td>
+                    <td>Immediate sending of a manually created json.</td>
+                </tr>
+                <tr>
+                    <td width="40%" ><b>antenna speed int</b></td>
+                    <td>The speed of change of antenna sensor per second (def 10).</td>
+                </tr>
+                <tr>
+                    <td width="40%" ><b>antenna step double</b></td>
+                    <td>Step change azimuth values (def 0.1).</td>
+                </tr>
+                <tr>
+                    <td width="40%" ><b>antenna x range double double</b></td>
+                    <td>Antenna x value range [min_value,max_value], def [0.0,90.0]</td>
+                </tr>
+                <tr>
+                    <td width="40%" ><b>antenna x step double</b></td>
+                    <td>Step change Antenna x values (def 0.1).</td>
+                </tr>
+                <tr>
+                    <td width="40%" ><b>antenna y double</b></td>
+                    <td>Constant antenna values y (def 1.0). </td>
+                </tr>
+                <tr>
+                    <td width="40%" ><b>antenna z double</b></td>
+                    <td>Constant antenna values z (def 1.0). </td>
+                </tr>
+                <tr>
+                    <td width="40%" ><b>antenna azimuth range double double</b></td>
+                    <td>Azimuth value range [min_value,max_value], def [0.0,90.0]</td>
+                </tr>
+                <tr>
+                    <td width="40%" ><b>boomangle speed int</b></td>
+                    <td>The speed of change of boomAngle sensor per second (def 10).</td>
+                </tr>
+                <tr>
+                    <td width="40%" ><b>boomangle range double double</b></td>
+                    <td>boomAngle value range [min_value,max_value], def [45.0,84.0]</td>
+                </tr>
+                <tr>
+                    <td width="40%" ><b>tiltangles x double</b></td>
+                    <td>Constant tiltangles values x (def 0.0).</td>
+                </tr>
+                <tr>
+                    <td width="40%" ><b>tiltangles y double</b></td>
+                    <td>Constant tiltangles values y (def 0.0).</td>
+                </tr>
+                <tr>
+                    <td width="40%" ><b>boomdeep speed int</b></td>
+                    <td>The speed of change of boomDeep sensor per second (def 10).</td>
+                </tr>
+                <tr>
+                    <td width="40%" ><b>boomdeep step double</b></td>
+                    <td>Step change boomDeep values (def 0.1).</td>
+                </tr>
+                <tr>
+                    <td width="40%" ><b>boomdeep range double double</b></td>
+                    <td>boomDeep value range [min_value,max_value], def [0.0,4.0]</td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+
+
+
+    <div class="vertDiv bord">
+        <!--<p><textarea rows="30" cols="100" name="terminal_message" disabled th:placeholder="${terminal_message}" th:value="${terminal_message}"></textarea></p>-->
+
+        <div class="gorAroundDiv">
+            <div class="leftCol"><span class="mainText">Terminal-> </span></div>
+            <form class="gorBetweenDiv" th:action="@{/terminal}" th:method="post">
+                <div class="centerCol">
+                    <input type="text" style="width: 95%" name="commands" value="" th:value="${commands}" autofocus>
+                </div>
+                <div class="rightCol">
+                    <input type="submit" style="display: none;">
+                    <input type="submit" class="button24" value="run">
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <p><span th:utext="${terminal_message}" ></span></p>
+
+
+    <div class="vertDiv">
+        <span type="text" style="padding: 10px" text=" "></span>
+        <form class="gorAroundDiv" th:action="@{/reset}" th:method="get">
+            <input type="submit" class="button24" value="reset">
+        </form>
+        <span type="text" style="padding: 10px" text=" "></span>
+    </div>
+
+
+    <footer id="footer">
+        <div class="gorAroundDiv">
+        <form class="gorAroundDiv" th:target="blank" th:action="@{/exit}" th:method="get">
+            <span class="mainText">Press to stop server : </span>
+            <input type="submit" style="display: none;">
+            <input type="submit" class="button24" value="exit">
+        </form>
+        </div>
+    </footer>
+
+</div>
+
+</body>
+</html>
